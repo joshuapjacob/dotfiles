@@ -82,6 +82,7 @@ More:
 - Playerctl
 - Redshift
 - Unclutter
+- Stow
 
 ## Installation
 I don't recommend this.
