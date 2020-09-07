@@ -1,0 +1,401 @@
+; TODO: Add polybar icons
+
+[bar/bar]
+
+font-0 = SF Pro Display:pixelsize=10;2
+font-1 = Weather Icons:size=10;1
+font-2 = FontAwesome5Free:style=Solid:pixelsize=9;2
+font-3 = FontAwesome5Free:style=Regular:pixelsize=9;2
+font-4 = FontAwesome5Brands:style=Regular:pixelsize=9;2
+
+monitor = "eDP1"
+bottom = true
+
+fixed-center = true
+
+width = 100%
+height = 25
+
+background = #000000
+foreground = #ffffff
+
+radius = 0.0
+
+# line-size = 1
+# line-color = #f00
+
+# border-size = 2
+# border-color = #00ff00
+padding-left = 1
+padding-right = 1
+module-margin = 2
+
+tray-position = right
+
+click-left =
+click-middle =
+click-right =
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
+double-click-left =
+double-click-middle =
+double-click-right =
+
+modules-left = i3 cpu memory system-usb-udev
+modules-center = spotify pulseaudio
+modules-right = degiro openweathermap-fullfeatured date updates-arch-combined wireless-network system-bluetooth-bluetoothctl battery
+
+; i3 ---------------------------------------------------------------------------
+
+[module/i3]
+strip-wsnumbers = true
+type = internal/i3
+format = <label-state> <label-mode>
+
+label-focused = %icon%
+label-focused-foreground = #ffffff
+label-focused-background = #151515
+label-focused-padding = 2
+
+label-unfocused = %icon%
+label-unfocused-padding = 2
+
+label-visible = %icon%
+label-visible-underline = #555555
+label-visible-padding = 2
+
+label-urgent = %icon%
+label-urgent-foreground = #000000
+label-urgent-background = #303030
+label-urgent-padding = 2
+
+; TODO: Add workspace icons
+; ws-icon-[0-9]+ = <label>;<icon>
+; NOTE: The <label> needs to match the name of the i3 workspace
+; Neither <label> nor <icon> can contain a semicolon (;)
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;5
+ws-icon-default = x
+; NOTE: You cannot skip icons, e.g. to get a ws-icon-6
+; you must also define a ws-icon-5.
+; NOTE: Icon will be available as the %icon% token inside label-*
+
+
+; DATE -------------------------------------------------------------------------
+
+[module/date]
+type = internal/date
+interval = 1.0
+date = %A, %d %B %H:%M
+date-alt = %d/%m/%y %H:%M%
+
+; BATTERY ----------------------------------------------------------------------
+
+[module/battery]
+type = internal/battery
+format-background = #404040
+
+; This is useful in case the battery never reports 100% charge
+full-at = 100
+
+; Use the following command to list batteries and adapters:
+; $ ls -1 /sys/class/power_supply/
+battery = BAT0
+adapter = AC
+
+; If an inotify event haven't been reported in this many
+; seconds, manually poll for new values.
+;
+; Needed as a fallback for systems that don't report events
+; on sysfs/procfs.
+;
+; Disable polling by setting the interval to 0.
+;
+; Default: 5
+poll-interval = 5
+
+; see "man date" for details on how to format the time string
+; NOTE: if you want to use syntax tags here you need to use %%{...}
+; Default: %H:%M:%S
+time-format = %H:%M
+
+; Available tags:
+;   <label-charging> (default)
+;   <bar-capacity>
+;   <ramp-capacity>
+;   <animation-charging>
+format-charging = <label-charging>
+
+; Available tags:
+;   <label-discharging> (default)
+;   <bar-capacity>
+;   <ramp-capacity>
+;   <animation-discharging>
+format-discharging = <label-discharging>
+
+; Available tags:
+;   <label-full> (default)
+;   <bar-capacity>
+;   <ramp-capacity>
+;format-full = <label-full>
+
+; Available tokens:
+;   %percentage% (default) - is set to 100 if full-at is reached
+;   %percentage_raw%
+;   %time%
+;   %consumption% (shows current charge rate in watts)
+label-charging = %percentage%% %time%
+
+; Available tokens:
+;   %percentage% (default) - is set to 100 if full-at is reached
+;   %percentage_raw%
+;   %time%
+;   %consumption% (shows current discharge rate in watts)
+label-discharging =  %percentage%% %time%
+
+; Available tokens:
+;   %percentage% (default) - is set to 100 if full-at is reached
+;   %percentage_raw%
+label-full = %percentage%%
+
+; Only applies if <ramp-capacity> is used
+; ramp-capacity-0 = 
+; ramp-capacity-1 = 
+; ramp-capacity-2 = 
+; ramp-capacity-3 = 
+; ramp-capacity-4 = 
+
+; Only applies if <bar-capacity> is used
+; bar-capacity-width = 10
+
+; Only applies if <animation-charging> is used
+; animation-charging-0 = 
+; animation-charging-1 = 
+; animation-charging-2 = 
+; animation-charging-3 = 
+; animation-charging-4 = 
+; Framerate in milliseconds
+; animation-charging-framerate = 750
+
+; Only applies if <animation-discharging> is used
+animation-discharging-0 = 
+animation-discharging-1 = 
+animation-discharging-2 = 
+animation-discharging-3 = 
+animation-discharging-4 = 
+; Framerate in milliseconds
+animation-discharging-framerate = 500
+
+; CPU --------------------------------------------------------------------------
+
+[module/cpu]
+type = internal/cpu
+
+; Available tags:
+;   <label> (default)
+;   <bar-load>
+;   <ramp-load>
+;   <ramp-coreload>
+format = <label>
+
+; Available tokens:
+;   %percentage% (default) - total cpu load averaged over all cores
+;   %percentage-sum% - Cumulative load on all cores
+;   %percentage-cores% - load percentage for each core
+;   %percentage-core[1-9]% - load percentage for specific core
+label = CPU %percentage%%
+
+; TODO: Ramp Icons
+; Spacing between individual per-core ramps
+; ramp-coreload-spacing = 1
+; ramp-coreload-0 = ▁
+; ramp-coreload-1 = ▂
+; ramp-coreload-2 = ▃
+; ramp-coreload-3 = ▄
+; ramp-coreload-4 = ▅
+; ramp-coreload-5 = ▆
+; ramp-coreload-6 = ▇
+; ramp-coreload-7 = █
+
+; RAM --------------------------------------------------------------------------
+
+[module/memory]
+type = internal/memory
+format = <label>
+label = RAM %percentage_used%%
+
+; TODO: Add polybar RAM icons
+; Only applies if <ramp-used> is used
+; ramp-used-0 = ▁
+; ramp-used-1 = ▂
+; ramp-used-2 = ▃
+; ramp-used-3 = ▄
+; ramp-used-4 = ▅
+; ramp-used-5 = ▆
+; ramp-used-6 = ▇
+; ramp-used-7 = █
+
+; SPOTIFY ----------------------------------------------------------------------
+
+[module/spotify]
+type = custom/script
+interval = 0.5
+; format-prefix = "%{T3} %{T-}"
+format = <label>
+exec = python ~/.config/polybar/scripts/spotify_status.py -f '{play_pause} {artist} - {song}' --font=1 --playpause-font=3 -p ' , '
+format-underline = #1db954
+click-left = playerctl play-pause
+
+; NETWORK ----------------------------------------------------------------------
+
+; [module/wired-network]
+; type = internal/network
+; interface = eth1
+
+[module/wireless-network]
+type = internal/network
+interface = wlp2s0
+interval = 3
+
+; Consider an `UNKNOWN` interface state as up.
+; Some devices like USB network adapters have
+; an unknown state, even when they're running
+; Default: false
+; unknown-as-up = true
+
+; Available tags:
+;   <label-connected> (default)
+;   <ramp-signal>
+format-connected = <label-connected>
+
+; Available tags:
+;   <label-disconnected> (default)
+format-disconnected = <label-disconnected>
+
+; Available tags:
+;   <label-connected> (default)
+;   <label-packetloss>
+;   <animation-packetloss>
+format-packetloss = <label-connected>
+
+; All labels support the following tokens:
+;   %ifname%    [wireless+wired]
+;   %local_ip%  [wireless+wired]
+;   %local_ip6% [wireless+wired]
+;   %essid%     [wireless]
+;   %signal%    [wireless]
+;   %upspeed%   [wireless+wired]
+;   %downspeed% [wireless+wired]
+;   %linkspeed% [wired]
+
+; Default: %ifname% %local_ip%
+label-connected = %essid% %signal%%
+
+; Only applies if <ramp-signal> is used
+; ramp-signal-0 = 😱
+; ramp-signal-1 = 😠
+; ramp-signal-2 = 😒
+; ramp-signal-3 = 😊
+; ramp-signal-4 = 😃
+; ramp-signal-5 = 😈
+
+; Only applies if <animation-packetloss> is used
+; animation-packetloss-0 = ⚠
+; animation-packetloss-0-foreground = #ffa64c
+; animation-packetloss-1 = 📶
+; animation-packetloss-1-foreground = #000000
+; Framerate in milliseconds
+; animation-packetloss-framerate = 500
+
+; PULSEAUDIO -------------------------------------------------------------------
+
+; TODO: FIX
+[module/pulseaudio]
+type = internal/pulseaudio
+
+; Sink to be used, if it exists (find using `pacmd list-sinks`, name field)
+; If not, uses default sink
+sink = alsa_output.pci-0000_00_1f.3.analog-stereo
+
+; Interval for volume increase/decrease (in percent points)
+; Default: 5
+interval = 5
+
+; Available tags:
+;   <label-volume> (default)
+;   <ramp-volume>
+;   <bar-volume>
+format-volume = <label-volume>
+
+; Available tags:
+;   <label-muted> (default)
+;   <ramp-volume>
+;   <bar-volume>
+;format-muted = <label-muted>
+
+; Available tokens:
+;   %percentage% (default)
+;   %decibels% (unreleased)
+;label-volume = %percentage%%
+
+; Available tokens:
+;   %percentage% (default)
+;   %decibels% (unreleased)
+label-muted = 🔇 muted
+label-muted-foreground = #666
+
+; Only applies if <ramp-volume> is used
+ramp-volume-0 = 🔈
+ramp-volume-1 = 🔉
+ramp-volume-2 = 🔊
+
+; ARCH UPDATES -----------------------------------------------------------------
+
+[module/updates-arch-combined]
+type = custom/script
+exec = ~/.config/polybar/scripts/updates-arch-combined.sh
+interval = 600
+
+; CRYPTO -----------------------------------------------------------------------
+
+[module/crypto]
+type = custom/script
+interval = 300
+exec = ~/.config/polybar/scripts/crypto.py
+
+; WEATHER ----------------------------------------------------------------------
+
+[module/openweathermap-fullfeatured]
+type = custom/script
+exec = ~/.config/polybar/scripts/openweathermap-fullfeatured.sh
+interval = 600
+label-font = 2
+
+; BLUETOOTH --------------------------------------------------------------------
+
+[module/system-bluetooth-bluetoothctl]
+type = custom/script
+exec = ~/.config/polybar/scripts/system-bluetooth-bluetoothctl.sh
+tail = true
+; click-left = ~/.config/polybar/scripts/system-bluetooth-bluetoothctl.sh --toggle &
+
+; USB --------------------------------------------------------------------------
+
+[module/system-usb-udev]
+type = custom/script
+interval = 1
+exec = ~/.config/polybar/scripts/system-usb-udev.sh
+tail = true
+click-left = ~/.config/polybar/scripts/system-usb-udev.sh --mount &
+click-right = ~/.config/polybar/scripts/system-usb-udev.sh --unmount &
+
+; DEGIRO -----------------------------------------------------------------------
+;
+;[module/degiro]
+;type = custom/script
+;interval = 10
+;exec = ~/.config/polybar/scripts/degiro.sh
+;tail = true

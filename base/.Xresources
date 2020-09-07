@@ -1,0 +1,27 @@
+
+!rofi.font:            Iosevka Term Medium 11
+!rofi.font:            Monospace 10
+!rofi.terminal:        termite
+!rofi.lines:           10
+!rofi.columns:         1
+!rofi.eh:              1
+!rofi.location:        0
+!rofi.width:           100
+!rofi.padding:         200
+!rofi.fullscreen:      true
+!rofi.bw:              1
+!rofi.sidebar-mode:    true
+!rofi.separator-style: dash
+!rofi.hide-scrollbar:  true
+!rofi.color-enabled:   true
+!rofi.line-margin:     3
+!rofi.modi:            drun,run,window,ssh
+
+
+Xft.dpi:                        96
+Xft.antialias:                  1
+Xft.autohint:                   1
+Xft.hinting:                    1
+Xft.hintstyle:                  hintslight
+Xft.lcdfilter:                  lcdlight
+Xft.rgba:                       rgb

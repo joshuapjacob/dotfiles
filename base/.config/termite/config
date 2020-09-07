@@ -1,0 +1,12 @@
+[options]
+font = Monospace 10
+font = Iosevka Term 10
+audible_bell = true
+mouse_autohide = true
+allow_bold = true
+allow_italic = true
+clickable_url = true
+browser = google-chrome-stable
+urgent_on_bell = true
+scrollback_lines = 10000
+search_wrap = true

@@ -1,0 +1,217 @@
+# i3 config file (v4)
+
+### INIT -----------------------------------------------------------------------
+
+# Set up displays w/ xrandr
+exec --no-startup-id xrandr --output eDP1 --auto --output HDMI1 --auto --left-of eDP1
+
+# Apply .Xresource
+exec_always --no-startup-id xrdb ~/.Xresources
+
+# Set background and color scheme (using feh and pyWal)
+exec_always --no-startup-id feh --bg-fill ~/.config/wallpaper.jpg
+exec_always --no-startup-id wal -i ~/.config/wallpaper.jpg -q -n -b 000000
+
+# Start polybar
+# Note: script kills current ones on i3 refresh, otherwise they duplicate
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
+# Start redshift w/ geoclue2 (adjusts screen temp. based on location and time)
+exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
+#! FIX ME
+exec --no-startup-id redshift -c ~/.config/redshift/redshift.conf
+
+# Start picom compositor
+exec --no-startup-id picom --config ~/.config/picom/picom.conf
+
+# Start unclutter (hides cursor when not in use)
+exec --no-startup-id unclutter
+
+# Set colors from .Xresources
+# NOTE: '#f0f0f0' and '#000000' are fallback colors.
+set_from_resource $fg i3wm.color7 #f0f0f0
+set_from_resource $bg i3wm.color2 #000000
+# class                 border  backgr. text indicator child_border
+client.focused          $bg     $bg     $fg  $bg       $bg
+client.focused_inactive $bg     $bg     $fg  $bg       $bg
+client.unfocused        $bg     $bg     $fg  $bg       $bg
+client.urgent           $bg     $bg     $fg  $bg       $bg
+client.placeholder      $bg     $bg     $fg  $bg       $bg
+client.background       $bg
+
+# Set font (although i3 never uses it)
+font pango: Monospace 10
+
+### KEYBINDINGS ----------------------------------------------------------------
+
+# Set windows key as modifier
+set $mod Mod4
+
+# Use mouse+$mod to move floating windows
+floating_modifier $mod
+
+# Shortcut to start termite (terminal)
+bindsym $mod+Return exec --no-startup-id termite
+
+# Shortcut for application launching w/ Rofi
+bindsym $mod+m exec --no-startup-id rofi -no-lazy-grab -show drun -theme themes/appsmenu.rasi
+
+# Shortcut for window switching w/ Rofi
+bindsym $mod+Tab exec --no-startup-id rofi -show window
+
+# Shortcuts to change focus
+bindsym $mod+Left focus left
+bindsym $mod+Right focus right
+bindsym $mod+Up focus up
+bindsym $mod+Down focus down
+
+# Shortcuts to move focused window
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Right move right
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Down move down
+
+# Shortcut to kill a focused window
+bindsym $mod+Shift+q kill
+
+# Shortcut to toggle fullscreen
+bindsym $mod+f fullscreen toggle
+
+# Shortcut to toggle split layout
+bindsym $mod+s layout toggle split
+
+# Shortcut to toggle tiling/floating
+bindsym $mod+Shift+d floating toggle
+
+# Shortcut to change focus between tiling/floating windows
+bindsym $mod+d focus mode_toggle
+
+# Shortcut to restart i3
+bindsym $mod+Shift+r restart
+
+# Shortcut to reload i3 configuration file
+bindsym $mod+Shift+c reload; exec notify-send "Reloaded i3 config."
+
+# Shortcut to lock/suspend
+bindsym $mod+l exec --no-startup-id betterlockscreen -l blur -t "Joshua Paul Jacob"
+bindsym $mod+Shift+l exec --no-startup-id betterlockscreen -s blur -t "Joshua Paul Jacob"
+
+# Shortcut to shutdown
+bindsym $mod+grave exec --no-startup-id shutdown now
+
+### GAPS & BORDERS -------------------------------------------------------------
+
+# Set borders for all windows
+for_window [class=".*"] border pixel 2
+
+# Enable gaps
+gaps inner 20
+
+# Hide borders adjacent to the screen edges
+hide_edge_borders none
+
+# Only enable gaps & borders when there is more than one window in the workspace
+smart_gaps on
+smart_borders on
+
+### AUDIO ----------------------------------------------------------------------
+
+# Volume Controls (PulseAudio)
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
+
+# Player controls
+bindsym XF86AudioNext exec --no-startup-id playerctl next
+bindsym XF86AudioPrev exec --no-startup-id playerctl previous
+bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+bindsym XF86AudioStop exec --no-startup-id playerctl stop
+
+### BACKLIGHT ------------------------------------------------------------------
+
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
+
+### SCREENSHOT -----------------------------------------------------------------
+
+# Shortcuts for maim
+bindsym Print exec maim -s --noopengl | xclip -selection clipboard -t image/png
+
+### WORKSPACE ------------------------------------------------------------------
+
+# Shortcuts to switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# Shortcuts to move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+# Resize mode
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym Left resize shrink width 5 px or 5 ppt
+        bindsym Down resize grow height 5 px or 5 ppt
+        bindsym Up resize shrink height 5 px or 5 ppt
+        bindsym Right resize grow width 5 px or 5 ppt
+
+        # Shortcuts to leave resize mode
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+# Shortcut to enter resize mode
+bindsym $mod+r mode "resize"
+
+### APPLICATIONS ---------------------------------------------------------------
+
+# Don't float these apps
+for_window [class="google-chrome"] floating disable
+for_window [class="code-oss"] floating disable
+for_window [class="spotify"] floating disable
+
+# Float these apps
+for_window [class="vlc"] floating enable
+for_window [class="Termite"] floating enable
+for_window [class="Zathura"] floating enable
+for_window [class="feh"] floating enable
+for_window [class="monero-core"] floating enable
+for_window [window_role="pop-up"] floating enable
+
+
+# Assign apps to specific workspaces
+assign [class="google-chrome"] workspace 1
+assign [class="code-oss"] workspace 2
+assign [class="spotify"] workspace 3
+
+# Autostart Google Chrome
+exec --no-startup-id google-chrome-stable
+
+### OTHER ----------------------------------------------------------------------
+
+# Allow popups during fullscreen mode
+popup_during_fullscreen smart
+
+# Update lock screen picture cache
+exec_always --no-startup-id betterlockscreen -u ~/.config/wallpaper.jpg

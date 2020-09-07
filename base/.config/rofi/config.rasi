@@ -1,0 +1,15 @@
+configuration {
+  modi:               "window,drun,ssh";
+  terminal: "termite";
+
+  
+  show-icons:         false;
+  ssh-client:          "ssh";
+  cycle:              true;
+  hide-scrollbar:     true;
+  disable-history:    false;
+  display-drun:       "apps";
+  columns: 2;
+  theme: "~/.cache/wal/colors-rofi-dark";
+
+}
