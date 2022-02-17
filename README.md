@@ -18,9 +18,6 @@ Feel free to steal mine, although I don't suggest blindly copying them.
 
 ## Branches
 
-**stygian-rex**
-: My Dual FHD Monitor Desktop
-
 **dell-xps**
 : My Dell XPS 15 (9550) Laptop
 
@@ -82,6 +79,29 @@ More:
 - Playerctl
 - Redshift
 - Unclutter
+- bluez-utils
+- docker, docker-compose
+- feh
+- geoclue
+- htop
+- ipython, python, jupyter
+- monero, monero-gui
+- nautilus
+- neofetch
+- netctl
+- nodejs, npm
+- openssh
+- slack-desktop
+- spicetify
+- spotify
+- sudo
+- tor-browser
+- dontawesome
+- weather-icons
+- zoom
+- zathura
+- yay
+- telegram-desktop
 
 ## Installation
 I don't recommend this.
