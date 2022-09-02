@@ -41,6 +41,8 @@ This repository contains my personal configuration files (a.k.a. dotfiles).
 : xorg <sup>[Arch](https://www.archlinux.org/packages/?name=xorg-server)</sup>
 - Window Manager
 : i3-gaps <sup>[Arch](https://www.archlinux.org/packages/community/x86_64/i3-gaps/)</sup>
+- Package Manager
+: yay
 - Compositor
 : picom <sup>[Arch](https://www.archlinux.org/packages/community/x86_64/picom/)</sup>
 - Shell
@@ -56,7 +58,7 @@ This repository contains my personal configuration files (a.k.a. dotfiles).
 - App Launcher
 : rofi <sup>[Arch](https://www.archlinux.org/packages/community/x86_64/rofi/)</sup>
 - Editor
-: code <sup>[Arch](https://www.archlinux.org/packages/community/x86_64/code/)</sup>,
+: visual-studio-code-bin <sup>[AUR](https://aur.archlinux.org/packages/visual-studio-code-bin)</sup>,
  gvim <sup>[Arch](https://www.archlinux.org/packages/extra/x86_64/gvim/)</sup>
 - Web Browser
 : google-chrome <sup>[AUR](https://aur.archlinux.org/packages/google-chrome/)</sup>
@@ -74,6 +76,11 @@ This repository contains my personal configuration files (a.k.a. dotfiles).
 : python-pywal <sup>[Arch](https://www.archlinux.org/packages/community/any/python-pywal/)</sup>
 - Lock Screen
 : betterlockscreen <sup>[AUR](https://aur.archlinux.org/packages/betterlockscreen/)</sup>
+- Instant Messaging App
+: telegram-desktop
+- Video Conferencing App
+: zoom
+
 
 More:
 - Playerctl
@@ -81,7 +88,6 @@ More:
 - Unclutter
 - bluez-utils
 - docker, docker-compose
-- feh
 - geoclue
 - htop
 - ipython, python, jupyter
@@ -98,10 +104,6 @@ More:
 - tor-browser
 - dontawesome
 - weather-icons
-- zoom
-- zathura
-- yay
-- telegram-desktop
 
 ## Installation
 I don't recommend this.
@@ -120,7 +122,6 @@ stow -S base -t ~
 ## To Do
 - Spicetify
 - Plymouth
-- Grub Customization
 - Set up Rofi
 - Set up Polybar
 - Configure 'snipping tool' equivalent w/ Compton
