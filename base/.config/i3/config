@@ -3,7 +3,7 @@
 ### INIT -----------------------------------------------------------------------
 
 # Set up displays w/ xrandr
-exec --no-startup-id xrandr --output eDP1 --auto --output HDMI1 --auto --left-of eDP1
+exec_always --no-startup-id xrandr --output eDP1 --auto --output HDMI1 --mode 2560x1440 --above eDP1
 
 # Apply .Xresource
 exec_always --no-startup-id xrdb ~/.Xresources
@@ -14,7 +14,7 @@ exec_always --no-startup-id wal -i ~/.config/wallpaper.jpg -q -n -b 000000
 
 # Start polybar
 # Note: script kills current ones on i3 refresh, otherwise they duplicate
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 # Start redshift w/ geoclue2 (adjusts screen temp. based on location and time)
 exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
