@@ -2,7 +2,9 @@
 
 These are my personal dotfiles, managed with Nix flakes for a reproducible
 setup. I use Nix-darwin on macOS with Homebrew integration, and GNU Stow to
-handle symlinking of config files. The hostname of my MacBook is `stygian`.
+handle symlinking of config files.
+
+The hostname of my MacBook is `stygian`.
 
 ## Install
 
