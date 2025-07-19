@@ -66,6 +66,9 @@
             cleanup = "uninstall";
             autoUpdate = true;
           };
+	  brews = [
+	    "libomp"
+	  ];
           casks = [
             "google-drive"
             "telegram-desktop"
