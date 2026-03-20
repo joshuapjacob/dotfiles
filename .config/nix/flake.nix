@@ -26,6 +26,7 @@
       environment.systemPackages = with pkgs; [
         # CLIs
         bat
+	claude-code
         delta
         duf
         fish
@@ -37,13 +38,12 @@
         ranger
         rustup
         stow
-        transmission_4
         uv
 
         # GUIs
         google-chrome
-        spotify
-        vlc-bin
+        qbittorrent
+	vlc-bin
         vscode
 
         # LaTeX
@@ -66,11 +66,12 @@
             cleanup = "uninstall";
             autoUpdate = true;
           };
-	  brews = [
-	    "libomp"
-	  ];
+          brews = [
+            "libomp"
+          ];
           casks = [
             "google-drive"
+            "spotify"
             "telegram-desktop"
           ];
       };
@@ -86,7 +87,6 @@
               "/Applications/Telegram Desktop.app"
               "${pkgs.google-chrome}/Applications/Google Chrome.app"
               "${pkgs.vscode}/Applications/Visual Studio Code.app"
-              "${pkgs.spotify}/Applications/Spotify.app"
               "/System/Applications/Utilities/Terminal.app"
             ];
           };
