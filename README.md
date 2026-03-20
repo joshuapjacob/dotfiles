@@ -26,15 +26,20 @@ stow .
 ## Update
 
 ```shell
-# Update the flake.
-sudo nix flake update --flake .config/nix
-
-# Switch to updated flake.
-sudo darwin-rebuild switch --flake .config/nix#stygian
+bash update.sh
 ```
 
-## Clean
+## TODO
 
-```shell
-nix-collect-garbage -d
-```
+- ripgrep
+- starship (shell prompt)
+- fzf
+- zbd
+- stow
+- jq
+- pass
+- doppler cli
+- gh cli
+- fd
+- zoxide
+- eze
