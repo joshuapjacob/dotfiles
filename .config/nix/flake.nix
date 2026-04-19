@@ -43,9 +43,11 @@
             ncdu
             neovim
             nixfmt
+            ollama
             ranger
             rustup
             stow
+            tex-fmt
             uv
 
             # GUIs
@@ -60,7 +62,6 @@
                 scheme-basic
                 charter
                 enumitem
-                fontawesome5
                 marvosym
                 preprint
                 titlesec
