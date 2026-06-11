@@ -75,6 +75,7 @@
             onActivation = {
               cleanup = "uninstall";
               autoUpdate = true;
+              extraFlags = [ "--force" ];
             };
             brews = [
               "libomp"
