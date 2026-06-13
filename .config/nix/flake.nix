@@ -45,6 +45,7 @@
             nixfmt
             ollama
             ranger
+            ripgrep
             rustup
             stow
             tex-fmt

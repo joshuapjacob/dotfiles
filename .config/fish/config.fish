@@ -4,6 +4,7 @@ if status is-interactive
     alias df="duf"      # https://github.com/muesli/duf
     alias r="ranger"    # https://github.com/ranger/ranger
     alias diff="delta"  # https://github.com/dandavison/delta
+    alias grep="rg"     # https://github.com/burntsushi/ripgrep
 end
 
 # Remove greeting.
