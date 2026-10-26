@@ -46,6 +46,7 @@
             ollama
             ranger
             ripgrep
+            ruff
             rustup
             stow
             tex-fmt
@@ -53,7 +54,6 @@
 
             # GUIs
             google-chrome
-            qbittorrent
             vlc-bin
             vscode
 
@@ -86,6 +86,7 @@
               "logi-options+"
               "spotify"
               "telegram-desktop"
+              "transmission"
             ];
           };
 
