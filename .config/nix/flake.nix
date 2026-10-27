@@ -50,6 +50,7 @@
             rustup
             stow
             tex-fmt
+            ty
             uv
 
             # GUIs

@@ -28,18 +28,3 @@ stow .
 ```shell
 bash update.sh
 ```
-
-## TODO
-
-- ripgrep
-- starship (shell prompt)
-- fzf
-- zbd
-- stow
-- jq
-- pass
-- doppler cli
-- gh cli
-- fd
-- zoxide
-- eze
